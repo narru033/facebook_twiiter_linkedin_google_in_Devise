@@ -1,0 +1,21 @@
+<h1>Editing Product</h1>
+<%= form_for @product do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+	<div>
+    <%= f.label :Decription %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+    <%= link_to 'Show', @product %> |
+		<%= link_to 'Back', product_path %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<div id="movie">
+  <%= render @product %>
+</div>
+<div class="fb-comments" data-href="http://rubyeffect.com" data-numposts="5" data-colorscheme="light"></div>
+<div id="reviews">
+  <h2><%= pluralize @product.reviews.size, "Comments" %></h2>
+
+  <% @product.reviews.each do |review| %>
+    <div class="review">
+      <div class="content"><%= review.content %></div>
+      <em>
+        &mdash;
+        <%= review.name %> gave it
+        <strong><%= pluralize review.rating, "star" %></strong>
+      </em>
+    </div>
+  <% end %>
+
+  <h4>Write a review</h4>
+  <%= form_for [@product, Review.new] do |f| %>
+    <div class="field">
+      <%= f.label :rating %>
+      <%= f.select :rating, 1..5 %>
+    </div>
+    <div class="field">
+      <%= f.label :name, "Your name" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.text_area :content, rows: 5, cols: 40 %>
+    </div>
+    <div class="actions"><%= f.submit %></div>
+  <% end %>
+</div>
+

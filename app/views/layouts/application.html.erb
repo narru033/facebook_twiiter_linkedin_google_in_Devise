@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devise</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag image_path("favicon.ico") %>
+  <meta property="fb:app_id" content="1479370212327640" />
+</head>
+<body>
+  <div class="line">
+    <% if user_signed_in? %>
+      Signed in as <b><i><%= current_user.email %></i></b> &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to image_tag("signout.png"), destroy_user_session_path, :title => "Sign Out" %> &nbsp;
+    <% else %>
+      <%= link_to image_tag("signup.png"), new_user_registration_path,:title => "Sign Up" %> &nbsp; <%= link_to image_tag("sign_in.png"), new_user_session_path, :title => "Sign In" %> OR 
+      <%= link_to image_tag("facebook.png", :class => 'dock-item', height: '40', width: '50', alt: "Edit Entry"), user_omniauth_authorize_path(:facebook),:title => "Sign in with Facebook", :class => "popup", :"data-width" => 600, :"data-height" => 400 %>
+      <%= link_to image_tag("google.png", height: '40', width: '50', :border=>0, :class => 'dock-item'), user_omniauth_authorize_path(:google_oauth2), :title => "Sign in with Google", :class => "popup", :"data-width" => 600, :"data-height" => 400 %> 
+      <%= link_to image_tag("twitter.png", height: '40', width: '50', :border=>0, :class => 'dock-item'),user_omniauth_authorize_path(:twitter), :title => "Sign in with Twitter", :class => "popup", :"data-width" => 600, :"data-height" => 400 %> 
+      <%= link_to image_tag("linkedin.png", height: '40', width: '50', :border=>0, :class => 'dock-item'), user_omniauth_authorize_path(:linkedin), :title => "Sign in with LinkedIn", :class => "popup", :"data-width" => 600, :"data-height" => 400 %>
+    <% end %>
+  </div>
+  <div class="errormsg">
+  		<% if notice %>
+    		<p class="alert-success"><%= notice %></p>
+  		<% end %>
+  		<% if alert %>
+    		<p class="alert-danger"><%= alert %></p>
+  		<% end %>
+  </div>
+  
+  <div id="fb-root"></div>
+  
+  <%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<h1>New Product</h1>
+<%= form_for @product do |f| %>
+  <div>
+    <%= f.label :name %>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :price %>
+    <div>
+      <%= f.text_field :price %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :Description %>
+    <div>
+      <%= f.text_area :description %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.submit %>
+    <%= link_to 'Cancel', products_path%>
+  </div>
+<% end %>

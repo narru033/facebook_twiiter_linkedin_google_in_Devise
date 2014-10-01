@@ -1,0 +1,11 @@
+<div>
+  <h2><%= product.name %></h2>
+  <h4><%= number_to_currency product.price %></h4>
+  <p><%= product.description %></p>
+  <% if current_page? product %>
+    <p><%= link_to "Back to Products", products_path %></p>
+  <% else %>
+    <p><%= link_to "Read Comments", product %></p>
+  <% end %>
+  <div class="clear"></div>
+</div>
